@@ -1,6 +1,7 @@
 name: Step 4 # Setup API hosting for the logic tier
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - "build-octofit-app"
