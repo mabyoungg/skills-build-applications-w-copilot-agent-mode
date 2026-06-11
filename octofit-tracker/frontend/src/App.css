@@ -1,67 +1,99 @@
 .app-shell {
-  min-height: 100svh;
-  display: grid;
-  place-items: center;
-  padding: 32px;
+  min-height: 100vh;
   background:
-    radial-gradient(circle at top, rgba(13, 110, 253, 0.22), transparent 32%),
+    radial-gradient(circle at top, rgba(13, 110, 253, 0.18), transparent 28%),
     linear-gradient(160deg, #09111f 0%, #0d1728 54%, #111827 100%);
   color: #f8fafc;
 }
 
-.hero-card {
-  width: min(960px, 100%);
-  padding: 48px;
+.app-header {
+  backdrop-filter: blur(16px);
+  background: rgba(5, 10, 20, 0.75);
+}
+
+.app-eyebrow {
+  color: #93c5fd;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.75rem;
+}
+
+.app-title {
+  font-size: clamp(1.4rem, 2vw, 2.2rem);
+  letter-spacing: -0.04em;
+}
+
+.app-note,
+.page-muted {
+  color: rgba(226, 232, 240, 0.78);
+}
+
+.app-nav .nav-link {
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 28px;
+  color: rgba(248, 250, 252, 0.78);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.app-nav .nav-link:hover,
+.app-nav .nav-link.active {
+  color: #ffffff;
+  background: rgba(13, 110, 253, 0.28);
+  border-color: rgba(147, 197, 253, 0.42);
+}
+
+.app-content {
+  position: relative;
+}
+
+.hero-card,
+.page-card,
+.summary-card {
+  border: 1px solid rgba(255, 255, 255, 0.12);
   background: rgba(8, 15, 28, 0.82);
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+  color: #f8fafc;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.32);
   backdrop-filter: blur(18px);
 }
 
-.eyebrow {
-  margin-bottom: 16px;
+.hero-card {
+  border-radius: 28px;
+}
+
+.page-card {
+  border-radius: 22px;
+}
+
+.summary-card {
+  border-radius: 18px;
+}
+
+.section-kicker {
   color: #93c5fd;
   text-transform: uppercase;
-  letter-spacing: 0.24em;
-  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  font-size: 0.75rem;
 }
 
-.hero-card h1 {
-  margin: 0;
-  max-width: 12ch;
-  font-size: clamp(2.75rem, 7vw, 5.5rem);
-  line-height: 0.95;
-  letter-spacing: -0.05em;
-  color: #ffffff;
+.collection-table {
+  color: #f8fafc;
 }
 
-.lead {
-  max-width: 62ch;
-  margin-top: 20px;
-  font-size: 1.125rem;
-  line-height: 1.7;
-  color: rgba(226, 232, 240, 0.82);
+.collection-table thead th {
+  color: #bfdbfe;
 }
 
-.action-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-top: 32px;
+.collection-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.05);
 }
 
-@media (max-width: 640px) {
-  .app-shell {
-    padding: 20px;
-  }
+.collection-badge {
+  background: rgba(13, 110, 253, 0.16);
+  color: #bfdbfe;
+  border: 1px solid rgba(147, 197, 253, 0.28);
+}
 
-  .hero-card {
-    padding: 28px;
-    border-radius: 22px;
-  }
-
-  .hero-card h1 {
-    max-width: none;
-  }
+.empty-state {
+  border: 1px dashed rgba(255, 255, 255, 0.18);
+  border-radius: 18px;
+  color: rgba(226, 232, 240, 0.75);
 }

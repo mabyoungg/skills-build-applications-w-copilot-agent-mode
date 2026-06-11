@@ -1,28 +1,16 @@
 /**
  * API client configuration for OctoFit Tracker.
  * Supports both Codespaces and localhost environments.
+ *
+ * VITE_CODESPACE_NAME must be defined in .env.local for Codespaces builds.
  */
 
 export function getApiBaseUrl(): string {
-  // Check if we're running in Codespaces by hostname pattern
-  const hostname = window.location.hostname
-  
-  // Codespaces URLs have pattern: xxx-8000.app.github.dev
-  if (hostname.includes('app.github.dev')) {
-    // Extract codespace name from hostname (e.g., "opulent-pancake-gg799q76q64c77w" from "opulent-pancake-gg799q76q64c77w-5173.app.github.dev")
-    const codespaceName = hostname.split('-').slice(0, -2).join('-')
-    if (codespaceName) {
-      return `https://${codespaceName}-8000.app.github.dev`
-    }
-  }
-
-  // Check environment variable (for build-time configuration)
-  const codespaceName = import.meta.env.VITE_CODESPACE_NAME
+  const codespaceName = import.meta.env.VITE_CODESPACE_NAME?.trim()
   if (codespaceName) {
     return `https://${codespaceName}-8000.app.github.dev`
   }
 
-  // Default to localhost for local development
   return 'http://localhost:8000'
 }
 
