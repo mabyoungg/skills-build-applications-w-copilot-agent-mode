@@ -1,0 +1,67 @@
+.app-shell {
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 32px;
+  background:
+    radial-gradient(circle at top, rgba(13, 110, 253, 0.22), transparent 32%),
+    linear-gradient(160deg, #09111f 0%, #0d1728 54%, #111827 100%);
+  color: #f8fafc;
+}
+
+.hero-card {
+  width: min(960px, 100%);
+  padding: 48px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 28px;
+  background: rgba(8, 15, 28, 0.82);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(18px);
+}
+
+.eyebrow {
+  margin-bottom: 16px;
+  color: #93c5fd;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  font-size: 0.78rem;
+}
+
+.hero-card h1 {
+  margin: 0;
+  max-width: 12ch;
+  font-size: clamp(2.75rem, 7vw, 5.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  color: #ffffff;
+}
+
+.lead {
+  max-width: 62ch;
+  margin-top: 20px;
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: rgba(226, 232, 240, 0.82);
+}
+
+.action-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+@media (max-width: 640px) {
+  .app-shell {
+    padding: 20px;
+  }
+
+  .hero-card {
+    padding: 28px;
+    border-radius: 22px;
+  }
+
+  .hero-card h1 {
+    max-width: none;
+  }
+}
