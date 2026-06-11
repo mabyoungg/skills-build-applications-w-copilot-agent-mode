@@ -1,0 +1,141 @@
+.dashboard {
+  padding: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.dashboard-header {
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.dashboard-header h1 {
+  margin: 0 0 12px 0;
+  font-size: 2.5rem;
+  color: #ffffff;
+}
+
+.api-info {
+  color: #93c5fd;
+  font-size: 0.9rem;
+  margin: 8px 0 0 0;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 24px;
+}
+
+.dashboard-card {
+  background: rgba(8, 15, 28, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 20px;
+  color: #f8fafc;
+}
+
+.dashboard-card h2 {
+  margin: 0 0 16px 0;
+  font-size: 1.5rem;
+  color: #e0e7ff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  padding-bottom: 12px;
+}
+
+.user-list,
+.activity-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.user-list li,
+.activity-list li {
+  padding: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.95rem;
+}
+
+.user-list li:last-child,
+.activity-list li:last-child {
+  border-bottom: none;
+}
+
+.user-list strong,
+.activity-list strong {
+  color: #93c5fd;
+}
+
+.user-list small,
+.activity-list small {
+  color: rgba(226, 232, 240, 0.7);
+  display: block;
+  margin-top: 4px;
+}
+
+.leaderboard-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.leaderboard-table thead {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.leaderboard-table th {
+  padding: 12px;
+  text-align: left;
+  color: #93c5fd;
+  font-weight: 600;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.12);
+}
+
+.leaderboard-table td {
+  padding: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.leaderboard-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.dashboard-loading,
+.dashboard-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  color: #f8fafc;
+  text-align: center;
+  padding: 20px;
+}
+
+.dashboard-error {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 12px;
+  flex-direction: column;
+}
+
+.dashboard-error h2 {
+  margin-top: 0;
+  color: #fca5a5;
+}
+
+.dashboard-error p {
+  margin: 8px 0;
+  color: rgba(226, 232, 240, 0.8);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-header h1 {
+    font-size: 1.75rem;
+  }
+}
