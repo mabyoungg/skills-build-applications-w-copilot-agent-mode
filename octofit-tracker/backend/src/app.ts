@@ -1,9 +1,19 @@
 import cors from 'cors'
 import express from 'express'
 import { healthRouter } from './routes/health.js'
+import { usersRouter } from './routes/users.js'
+import { teamsRouter } from './routes/teams.js'
+import { activitiesRouter } from './routes/activities.js'
+import { leaderboardRouter } from './routes/leaderboard.js'
+import { workoutsRouter } from './routes/workouts.js'
 
 export const app = express()
 
 app.use(cors())
 app.use(express.json())
 app.use('/api', healthRouter)
+app.use('/api/users', usersRouter)
+app.use('/api/teams', teamsRouter)
+app.use('/api/activities', activitiesRouter)
+app.use('/api/leaderboard', leaderboardRouter)
+app.use('/api/workouts', workoutsRouter)
