@@ -1,5 +1,10 @@
 import { useEffect, useState } from 'react'
-import { getActivities } from '../api/index'
+import { apiFetch } from '../api/client'
+import { normalizeCollectionResponse } from '../api/index'
+
+const activitiesEndpoint = import.meta.env.VITE_CODESPACE_NAME
+  ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/activities`
+  : 'http://localhost:8000/api/activities'
 
 export default function Activities() {
   const [activities, setActivities] = useState([])
@@ -13,7 +18,7 @@ export default function Activities() {
     async function loadActivities() {
       try {
         setLoading(true)
-        const response = await getActivities()
+        const response = normalizeCollectionResponse(await apiFetch(activitiesEndpoint))
 
         if (!cancelled) {
           setActivities(response.items)

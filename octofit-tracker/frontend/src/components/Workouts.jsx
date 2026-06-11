@@ -1,5 +1,10 @@
 import { useEffect, useState } from 'react'
-import { getWorkouts } from '../api/index'
+import { apiFetch } from '../api/client'
+import { normalizeCollectionResponse } from '../api/index'
+
+const workoutsEndpoint = import.meta.env.VITE_CODESPACE_NAME
+  ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/workouts`
+  : 'http://localhost:8000/api/workouts'
 
 function formatDate(value) {
   if (!value) {
@@ -22,7 +27,7 @@ export default function Workouts() {
     async function loadWorkouts() {
       try {
         setLoading(true)
-        const response = await getWorkouts()
+        const response = normalizeCollectionResponse(await apiFetch(workoutsEndpoint))
 
         if (!cancelled) {
           setWorkouts(response.items)

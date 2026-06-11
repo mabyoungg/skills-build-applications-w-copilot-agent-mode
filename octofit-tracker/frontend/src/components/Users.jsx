@@ -1,5 +1,10 @@
 import { useEffect, useState } from 'react'
-import { getUsers } from '../api/index'
+import { apiFetch } from '../api/client'
+import { normalizeCollectionResponse } from '../api/index'
+
+const usersEndpoint = import.meta.env.VITE_CODESPACE_NAME
+  ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/users`
+  : 'http://localhost:8000/api/users'
 
 function getTeamName(team) {
   if (!team) {
@@ -25,7 +30,7 @@ export default function Users() {
     async function loadUsers() {
       try {
         setLoading(true)
-        const response = await getUsers()
+        const response = normalizeCollectionResponse(await apiFetch(usersEndpoint))
 
         if (!cancelled) {
           setUsers(response.items)

@@ -1,5 +1,10 @@
 import { useEffect, useState } from 'react'
-import { getLeaderboard } from '../api/index'
+import { apiFetch } from '../api/client'
+import { normalizeCollectionResponse } from '../api/index'
+
+const leaderboardEndpoint = import.meta.env.VITE_CODESPACE_NAME
+  ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/leaderboard`
+  : 'http://localhost:8000/api/leaderboard'
 
 export default function Leaderboard() {
   const [leaderboard, setLeaderboard] = useState([])
@@ -13,7 +18,7 @@ export default function Leaderboard() {
     async function loadLeaderboard() {
       try {
         setLoading(true)
-        const response = await getLeaderboard()
+        const response = normalizeCollectionResponse(await apiFetch(leaderboardEndpoint))
 
         if (!cancelled) {
           setLeaderboard(response.items)

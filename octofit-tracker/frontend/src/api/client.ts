@@ -20,7 +20,7 @@ export function getApiBaseUrl(): string {
  */
 export async function apiFetch(endpoint: string, options?: RequestInit) {
   const baseUrl = getApiBaseUrl()
-  const url = `${baseUrl}${endpoint}`
+  const url = endpoint.startsWith('http://') || endpoint.startsWith('https://') ? endpoint : `${baseUrl}${endpoint}`
 
   const response = await fetch(url, {
     headers: {

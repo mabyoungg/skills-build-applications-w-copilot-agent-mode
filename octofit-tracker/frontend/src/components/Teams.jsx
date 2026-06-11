@@ -1,5 +1,10 @@
 import { useEffect, useState } from 'react'
-import { getTeams } from '../api/index'
+import { apiFetch } from '../api/client'
+import { normalizeCollectionResponse } from '../api/index'
+
+const teamsEndpoint = import.meta.env.VITE_CODESPACE_NAME
+  ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/teams`
+  : 'http://localhost:8000/api/teams'
 
 function getMemberNames(memberIds) {
   if (!Array.isArray(memberIds)) {
@@ -21,7 +26,7 @@ export default function Teams() {
     async function loadTeams() {
       try {
         setLoading(true)
-        const response = await getTeams()
+        const response = normalizeCollectionResponse(await apiFetch(teamsEndpoint))
 
         if (!cancelled) {
           setTeams(response.items)
